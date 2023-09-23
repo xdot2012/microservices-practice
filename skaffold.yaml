@@ -1,0 +1,15 @@
+apiVersion: skaffold/v4beta6
+kind: Config
+metadata:
+  name: micro-fastapi
+build:
+  artifacts:
+    - image: xdot2012/fastapi
+      context: fastapi
+      docker:
+        dockerfile: Dockerfile
+manifests:
+  rawYaml:
+    - infra/k8s/api.yaml
+    - infra/k8s/ingress.yaml
+    - infra/k8s/rabbitmq-depl.yaml
